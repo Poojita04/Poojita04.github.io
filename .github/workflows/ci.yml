@@ -1,0 +1,19 @@
+name: CI with Cache Demo
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: prime-cache-333a40b
+      uses: actions/cache@v4
+      with:
+        key: cache-333a40b
+        path: ~/.cache
+      
+    - name: Show cache result
+      run: echo "Cache step above ran successfully!"
